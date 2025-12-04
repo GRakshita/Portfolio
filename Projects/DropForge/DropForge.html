@@ -14,10 +14,10 @@
 
         :root {
             /* Softer, professional dark palette */
-            --primary-bg: #010712;      /* deep navy */
-            --secondary-bg: #070b1f;    /* slightly lighter navy */
+            --primary-bg: #01050c;      /* deep navy */
+            --secondary-bg: #05091d;    /* slightly lighter navy */
             --card-bg: #0b1220;         /* card background */
-            --purple: #8b5cf6;          /* accent violet */
+            --purple: #582fb9;          /* accent violet */
             --royal-blue: #38bdf8;      /* cyber blue/cyan accent */
             --text-white: #ebe9fc;      /* soft off-white */
             --text-gray: #b6becc;       /* neutral gray */
@@ -353,8 +353,8 @@
                 background: linear-gradient(
                     120deg,
                     transparent,
-                    rgba(139, 92, 246, 0.35),
-                    rgba(56, 189, 248, 0.3),
+                    rgba(139, 92, 246, 0.15),
+                    rgba(56, 189, 248, 0.12),
                     transparent
                 );
                 opacity: 0;
@@ -1302,14 +1302,14 @@ It automates shellcode generation, AES encryption, dropper compilation, and time
 <li>Simulates staged payload/key delivery with timing delays</li>
 </ul>
 <h2>Installation</h2>
-<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pycryptodome<span class="w"> </span>flask
-</code></pre></div>
+<pre class="codehilite"><code class="language-bash">pip install pycryptodome flask
+</code></pre>
 
 <h2>Usage</h2>
 <p>Run the automation script:</p>
-<div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>runner.sh
+<pre class="codehilite"><code class="language-bash">chmod +x runner.sh
 ./runner.sh
-</code></pre></div>
+</code></pre>
 
 <p>It will:</p>
 <ol>
@@ -1342,41 +1342,41 @@ It automates shellcode generation, AES encryption, dropper compilation, and time
 </li>
 </ol>
 <h2>Architecture</h2>
-<div class="codehilite"><pre><span></span><code><span class="n">DropForge</span><span class="o">/</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">runner</span><span class="o">.</span><span class="n">sh</span><span class="w"> </span><span class="c1"># Main automation script</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">dropper</span><span class="o">/</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">loader</span><span class="o">.</span><span class="n">py</span><span class="w"> </span><span class="c1"># In-memory payload loader</span>
-<span class="err">│</span><span class="w"> </span><span class="err">└──</span><span class="w"> </span><span class="n">loader</span><span class="o">.</span><span class="n">txt</span><span class="w"> </span><span class="c1"># Loader metadata/config</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">encryption</span><span class="o">/</span>
-<span class="err">│</span><span class="w"> </span><span class="err">└──</span><span class="w"> </span><span class="n">encryptor</span><span class="o">.</span><span class="n">py</span><span class="w"> </span><span class="c1"># AES encryption module</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">outputs</span><span class="o">/</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">custom_shellcode</span><span class="o">.</span><span class="n">txt</span><span class="w"> </span><span class="c1"># Custom shellcode</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">encrypted</span><span class="o">.</span><span class="n">txt</span><span class="w"> </span><span class="c1"># Key, IV, ciphertext (hex)</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">ip</span><span class="o">.</span><span class="n">txt</span><span class="w"> </span><span class="c1"># IP logs and temp storage</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">loader</span><span class="o">.</span><span class="n">c</span><span class="w"> </span><span class="c1"># Dropper C source</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">malware</span><span class="w"> </span><span class="c1"># Final compiled dropper binary</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">revshell</span><span class="o">.</span><span class="n">asm</span><span class="w"> </span><span class="c1"># Reverse shell assembly</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">revshell</span><span class="o">.</span><span class="n">o</span><span class="w"> </span><span class="c1"># Compiled object file</span>
-<span class="err">│</span><span class="w"> </span><span class="err">└──</span><span class="w"> </span><span class="n">shellcode</span><span class="o">.</span><span class="n">txt</span><span class="w"> </span><span class="c1"># Final extracted shellcode</span>
-<span class="err">├──</span><span class="w"> </span><span class="n">reverse</span><span class="o">/</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">convertor</span><span class="o">.</span><span class="n">py</span><span class="w"> </span><span class="c1"># Shellcode format converter</span>
-<span class="err">│</span><span class="w"> </span><span class="err">├──</span><span class="w"> </span><span class="n">generator</span><span class="o">.</span><span class="n">py</span><span class="w"> </span><span class="c1"># Shellcode generator</span>
-<span class="err">│</span><span class="w"> </span><span class="err">└──</span><span class="w"> </span><span class="n">shellcode</span><span class="o">.</span><span class="n">py</span><span class="w"> </span><span class="c1"># Shellcode utility functions</span>
-<span class="err">└──</span><span class="w"> </span><span class="n">server</span><span class="o">/</span>
-<span class="err">└──</span><span class="w"> </span><span class="n">server</span><span class="o">.</span><span class="n">py</span><span class="w"> </span><span class="c1"># Flask payload/key server</span>
-</code></pre></div>
+<pre class="codehilite"><code>DropForge/
+├── runner.sh # Main automation script
+├── dropper/
+│ ├── loader.py # In-memory payload loader
+│ └── loader.txt # Loader metadata/config
+├── encryption/
+│ └── encryptor.py # AES encryption module
+├── outputs/
+│ ├── custom_shellcode.txt # Custom shellcode
+│ ├── encrypted.txt # Key, IV, ciphertext (hex)
+│ ├── ip.txt # IP logs and temp storage
+│ ├── loader.c # Dropper C source
+│ ├── malware # Final compiled dropper binary
+│ ├── revshell.asm # Reverse shell assembly
+│ ├── revshell.o # Compiled object file
+│ └── shellcode.txt # Final extracted shellcode
+├── reverse/
+│ ├── convertor.py # Shellcode format converter
+│ ├── generator.py # Shellcode generator
+│ └── shellcode.py # Shellcode utility functions
+└── server/
+└── server.py # Flask payload/key server
+</code></pre>
 
 <h2>Sample Output</h2>
-<div class="codehilite"><pre><span></span><code><span class="err">revshell.asm</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="err">Reverse</span><span class="w"> </span><span class="err">shell</span><span class="w"> </span><span class="err">assembly</span>
+<pre class="codehilite"><code class="language-json">revshell.asm – Reverse shell assembly
 
-<span class="err">revshell.o</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="err">Assembled</span><span class="w"> </span><span class="err">objec</span><span class="kc">t</span><span class="w"> </span><span class="kc">f</span><span class="err">ile</span>
+revshell.o – Assembled object file
 
-<span class="err">shellcode.</span><span class="kc">t</span><span class="err">x</span><span class="kc">t</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="err">Fi</span><span class="kc">nal</span><span class="w"> </span><span class="err">hex</span><span class="w"> </span><span class="err">shellcode</span>
+shellcode.txt – Final hex shellcode
 
-<span class="err">e</span><span class="kc">n</span><span class="err">cryp</span><span class="kc">te</span><span class="err">d.</span><span class="kc">t</span><span class="err">x</span><span class="kc">t</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="err">Key</span><span class="w"> </span><span class="err">+</span><span class="w"> </span><span class="err">IV</span><span class="w"> </span><span class="err">+</span><span class="w"> </span><span class="err">cipher</span><span class="kc">te</span><span class="err">x</span><span class="kc">t</span>
+encrypted.txt – Key + IV + ciphertext
 
-<span class="err">malware</span><span class="w"> </span><span class="err">–</span><span class="w"> </span><span class="err">Fi</span><span class="kc">nal</span><span class="w"> </span><span class="err">compiled</span><span class="w"> </span><span class="err">dropper</span><span class="w"> </span><span class="err">(bi</span><span class="kc">nar</span><span class="err">y)</span>
-</code></pre></div>
+malware – Final compiled dropper (binary)
+</code></pre>
         </article>
         
         <div class="content-footer">

@@ -14,10 +14,10 @@
 
         :root {
             /* Softer, professional dark palette */
-            --primary-bg: #010712;      /* deep navy */
-            --secondary-bg: #070b1f;    /* slightly lighter navy */
+            --primary-bg: #01050c;      /* deep navy */
+            --secondary-bg: #05091d;    /* slightly lighter navy */
             --card-bg: #0b1220;         /* card background */
-            --purple: #8b5cf6;          /* accent violet */
+            --purple: #582fb9;          /* accent violet */
             --royal-blue: #38bdf8;      /* cyber blue/cyan accent */
             --text-white: #ebe9fc;      /* soft off-white */
             --text-gray: #b6becc;       /* neutral gray */
@@ -353,8 +353,8 @@
                 background: linear-gradient(
                     120deg,
                     transparent,
-                    rgba(139, 92, 246, 0.35),
-                    rgba(56, 189, 248, 0.3),
+                    rgba(139, 92, 246, 0.15),
+                    rgba(56, 189, 248, 0.12),
                     transparent
                 );
                 opacity: 0;
@@ -1237,7 +1237,7 @@
         <h2>Cybersecurity Analyst - Offensive Focused</h2>
         <p>Breaking systems to build better defenses. Specialized in exploit development, and offensive security operations.</p>
         <div class="cta-buttons">
-            <a href="../Resume/Rakshita_Gupta_Cybersecurity_Engineer.pdf" class="btn btn-primary" target="_blank">Resume</a>
+            <a href="Resume/Rakshita_Gupta_Cybersecurity_Engineer.pdf" class="btn btn-primary" target="_blank">Resume</a>
             <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
         </div>
     </div>
@@ -1252,7 +1252,7 @@
     <div class="cards-grid">
         
             
-            <div class="card">
+            <div class="card" role="link" tabindex="0" style="cursor:pointer;" onclick="if(event.target.closest('a')) return; window.location.href='Projects/DropForge/DropForge.html';" onkeydown="if((event.key==='Enter'||event.keyCode==13) && !event.target.closest('a')) window.location.href='Projects/DropForge/DropForge.html';">
                 <div class="card-icon"><i class="fa-solid fa-terminal"></i></div>
                 <h3>DropForge – Payload Delivery Framework</h3>
                 <p>A modular payload generation and delivery framework that builds, encrypts, and deploys controlled shellcode for red team simulations and security research.</p>
@@ -1261,7 +1261,7 @@
                     
                     <span class="tag">python</span><span class="tag">red-team</span>
                 </div>
-                <a href="Projects/DropForge/DropForge.html" class="read-more">View Project &rarr;</a>
+                <a href="Projects/DropForge/DropForge.html" class="read-more" style="display:inline-block; margin-top:0.75rem;">View Project &rarr;</a>
             </div>
             
         
@@ -1295,7 +1295,7 @@
 <section class="section">
     <div class="section-header">
         <h2>Recent Write-ups</h2>
-        <p>CTF solutions and penetration testing reports</p>
+        <p>CTF solutions and Machine walkthroughs</p>
     </div>
     <div class="cards-grid">
         
