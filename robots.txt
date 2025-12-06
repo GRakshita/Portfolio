@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rakshitagupta.com/sitemap.xml
+Sitemap: https://rakshitagupta.in/sitemap.xml
