@@ -1327,35 +1327,34 @@
         filterTags.forEach(tag => {
             tag.addEventListener('click', () => {
                 filterTags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');    
+                tag.classList.add('active');
+
                 const filter = tag.getAttribute('data-filter');
+
                 blogCards.forEach(card => {
-                    if (filter === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        if (card.getAttribute('data-category') === filter) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    }
+                    const match = filter === 'all' || card.getAttribute('data-category') === filter;
+                    card.style.display = match ? 'block' : 'none';
                 });
             });
         });
     }
 
     if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
+        searchInput.addEventListener('input', e => {
             const searchTerm = e.target.value.toLowerCase();
+
             blogCards.forEach(card => {
                 const title = card.querySelector('h3').textContent.toLowerCase();
                 const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase();
-                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
-                if (title.includes(searchTerm) || excerpt.includes(searchTerm) || tags.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                const tags = Array.from(card.querySelectorAll('.tag'))
+                                  .map(t => t.textContent.toLowerCase())
+                                  .join(' ');
+
+                const match = title.includes(searchTerm)
+                           || excerpt.includes(searchTerm)
+                           || tags.includes(searchTerm);
+
+                card.style.display = match ? 'block' : 'none';
             });
         });
     }
