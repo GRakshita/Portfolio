@@ -1214,120 +1214,108 @@
 <body>
     <!-- Navigation -->
     
-    <nav>
+ <nav>
         <div class="nav-container">
             <div class="logo">Rakshita Gupta</div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="blogs.html">Blogs</a></li>
-                <li><a href="writeups.html">Write-ups</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../blogs.html" class="active">Blogs</a></li>
+                <li><a href="../../writeups.html">Write-ups</a></li>
+                <li><a href="../../projects.html">Projects</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
-    
+ 
 
     
-<!-- Hero Section -->
-<section class="hero">
-    <div class="bg-animation">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="hero-content">
-        <h1>Rakshita Gupta</h1>
-        <h2>Cybersecurity Analyst - Offensive Focused</h2>
-        <p>Breaking systems to build better defenses. Specialized in exploit development, and offensive security operations.</p>
-        <div class="cta-buttons">
-            <a href="Resume/Rakshita_Gupta_Cybersecurity_Engineer.pdf" class="btn btn-primary" target="_blank">Resume</a>
-            <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+    
+
+    <section class="content-page">
+        <div class="content-header">
+            <div class="content-meta">
+                <span class="content-category">Red VS Blue Teaming</span>
+                <span class="content-date">08-12-2025</span>
+            </div>
+            <h1 class="content-title">The Red and The Blue</h1>
+            <p class="content-description">A clear breakdown of how red and blue teams operate in modern cybersecurity, explained through a real-world-inspired scenario. The article shows how attackers exploit small weaknesses, how defenders respond, and why both roles are essential for strengthening an organization’s overall security posture.</p>
+            
+            <div class="content-tags">
+                
+                <span class="tag">blue-team</span>
+                
+                <span class="tag">red-team</span>
+                
+                <span class="tag">security overview</span>
+                
+                <span class="tag">network security</span>
+                
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                
+            </div>
+            
+            
         </div>
-    </div>
-</section>
-
-<!-- Featured Projects -->
-<section class="section" style="background: var(--secondary-bg);">
-    <div class="section-header">
-        <h2>Featured Projects</h2>
-        <p>Open-source tools and security research</p>
-    </div>
-    <div class="cards-grid">
         
-            
-            <div class="card" role="link" tabindex="0" style="cursor:pointer;" onclick="if(event.target.closest('a')) return; window.location.href='Projects/DropForge/DropForge.html';" onkeydown="if((event.key==='Enter'||event.keyCode==13) && !event.target.closest('a')) window.location.href='Projects/DropForge/DropForge.html';">
-                <div class="card-icon"><i class="fa-solid fa-terminal"></i></div>
-                <h3>DropForge – Payload Delivery Framework</h3>
-                <p>A modular payload generation and delivery framework that builds, encrypts, and deploys controlled shellcode for red team simulations and security research.</p>
-                <div class="card-meta">
-                    <span class="tag">Offensive Security Tool</span>
-                    
-                    <span class="tag">python</span><span class="tag">red-team</span>
-                </div>
-                <a href="Projects/DropForge/DropForge.html" class="read-more" style="display:inline-block; margin-top:0.75rem;">View Project &rarr;</a>
-            </div>
-            
+        <article class="content-body">
+            <h2>The Reality of Modern Digital Threats</h2>
+<p>The Digital Defense Landscape is continuously evolving and growing at a faster rate and so are the attack chains that are causing a threat to this digital barrier. Research shows that the average number of days it takes to identify that a network has been compromised is 181 days. That is roughly six months. This timeline gives enough time to a malicious attacker to infiltrate the sensitive data, disrupt the services worldwide, deploy a ransomware attack and in worst-case scenario,  establish persistence that survives reboot or even updates. If that happens, it has high probability of going undetected for years.</p>
+<h2>The Impact</h2>
+<p>In the recent years, there have been several incidents reporting high severity attacks due to overlooked weak security posture. Recently, in July 2025, a global IT distributor named “Ingram Micro” was hit by a ransomware attack due to misconfigured VPN access that allowed the attackers to infiltrate the network. The result? Operations stalled for several days worldwide and supply chains system went offline. Analysts estimated Ingram Micro lost as much as $136 million in revenue per day during the crisis window. This is just one of several incidents happened and still happening worldwide.</p>
+<p>In order to keep pace with this constant change in adversary kill chains, the security community relies on a structured practice that separates the work across red and blue teams. Let’s understand the role of each of the teams and how they operate in a security cycle by taking a scenario.</p>
+<h2>The Scenario: ALTURA</h2>
+<p>Suppose there’s a digital finance firm named <strong>ALTURA,</strong> which provides banking investment and Global Payment services through digital platforms and client facing teams.</p>
+<p>The company runs:</p>
+<ul>
+<li>a public web portal for customers</li>
+<li>an internal employee network</li>
+<li>a cloud environment for analytics</li>
+<li>databases that store transaction records</li>
+</ul>
+<p>They recently met with a brute force attack on their database. One of their developers, accidentally  configured the database to be publicly accessible on the Internet i.e. bound to <code>0.0.0.0</code> (open to everyone) instead of limiting it to the internal network. There were multiple brute force attempts made to get past authentication, which triggered an alert to the internal security team. The good news was, the attacker didn’t get very far but it became very clear that even a small misconfiguration can be enough for attackers to find a way in and the company needs to harden their overall security posture, for which they require professionals.</p>
+<h2>The Red Team</h2>
+<p>Here comes the role of <strong>Red Team</strong>. Think of them as a group of “Trusted attackers” inside an organization. They don't wait for the breach to happen. They imitate attackers and simulate real-world attacks to test how strong the company's defenses actually are. This is done with the purpose of revealing how vulnerable an organization is before an actual attacker discovers those loop holes.</p>
+<p>In ALTURA's case, the red team is brought in, to conduct a thorough security assessment with defined scope and proper authorization. They started by reconnaissance i.e. gathering information about ALTURA's infrastructure, system details, and potential entry points. Next, they attempted various attack vectors: scanning for open ports, testing for weak credentials, trying SQL injection on web applications, and even attempting social engineering tactics like phishing emails to employees.</p>
+<p>During their assessment, the red team detected several critical vulnerabilities:</p>
+<ul>
+<li><strong>Mis-Configured Database:</strong> The database was still publicly accessible from the internet, revealing sensitive financial data to malicious attackers.</li>
+<li><strong>Weak Password Policy:</strong> Several employee accounts used common passwords that could be easily cracked through brute force attacks.</li>
+<li><strong>Unpatched / Outdated Operating Systems:</strong> Most of the operating systems were running on outdated versions with known security vulnerabilities and lacked current updates.</li>
+<li><strong>Improper Network Segmentation:</strong> They found that they could move laterally across different systems in the internal network without much restriction.</li>
+<li><strong>Lack of Multi-Factor Authentication:</strong> Majority of the systems relied solely on username and password combinations.</li>
+</ul>
+<p>In a real attack scenario, that level of access could have resulted in massive data breaches, financial fraud, and severe reputational damage.</p>
+<h2>The Blue Team</h2>
+<p>At the end of the assessment, the red team compiles a comprehensive report detailing their findings, the attack vector, and the potential impact along with the severity of the threat. This is where <strong>Blue Team</strong> comes into play. Consider them as the Organization's Security Shield. Their job is to persistently monitor the network by analyzing logs, detect anomalies and respond to threats by taking defensive measures. In this scenario, the blue team takes the red team's finding, that is their report, as a blueprint to strengthen the organization's security posture.</p>
+<p>Here's how the blue team responded to each identified vulnerability:</p>
+<ul>
+<li><strong>Secured Database:</strong> They immediately reconfigured the database to restrict access to internal networks only and set up firewall and Intrusion Detection System with strong pre-defined rules to block unauthorized connection attempts and also to trigger an alert if such an attempt is made.</li>
+<li><strong>Implemented Strong Password Policy:</strong> They enforced stricter password requirements including minimum length and complexity rules that included the usage of symbols and digits and prohibiting certain characters.</li>
+<li><strong>Updated Systems:</strong> They applied security patches and updates to eliminate known vulnerabilities and security gaps.</li>
+<li><strong>Proper Network Segmentation:</strong> They re-structured the network architecture to create isolated zones, ensuring that even if one segment is compromised, the attacker couldn't easily access other systems in the network. This also includes the implementation of Zero Trust Policy, ensuring no user or device is trusted by default, and everything must be verified.</li>
+<li><strong>Implemented Multi-Factor Authentication:</strong> They introduced MFA across all systems and applications, adding an extra layer of security. This ensures online security of the user/employee accounts.</li>
+</ul>
+<h2>The Conclusion</h2>
+<p>The issues and threat potentials identified in this scenario represent a lower end of the threat spectrum. The real-world situation is far worse than this. Poor security gives the attacker an upper hand to abuse the weaknesses, that eventually leads to drained funds, leaked public records or even services being shut down for weeks. And in order to avoid such happenings, both the red and blue teams play a crucial part in maintaining a secure digital barrier of an organization.</p>
+<p>The difference and significance of both the teams is visible when we look at the real-world incidents and the scale of damage weak security can invite. Their roles are distinct but they share a sole purpose: one attacks to expose the flaws and the other strengthens it to withstand those flaws shaping a stronger security posture.</p>
+        </article>
         
-    </div>
-    <div class="view-more">
-        <a href="projects.html" class="btn btn-secondary">Explore All Projects</a>
-    </div>
-</section>
-
-
-<!-- Latest Blogs -->
-<section class="section">
-    <div class="section-header">
-        <h2>Latest Blogs</h2>
-        <p>Insights, tutorials, and research on cybersecurity</p>
-    </div>
-    <div class="cards-grid">
-        
-            
-            <div class="card">
-                <div class="card-icon">📝</div>
-                <h3>The Red and The Blue</h3>
-                <p>A clear breakdown of how red and blue teams operate in modern cybersecurity, explained through a real-world-inspired scenario. The article shows how attackers exploit small weaknesses, how defenders respond, and why both roles are essential for strengthening an organization’s overall security posture.</p>
-                <div class="card-meta">
-                    <span class="tag">Red VS Blue Teaming</span>
-                    <span class="tag">blue-team</span><span class="tag">red-team</span>
-                    <span class="date">08-12-2025</span>
-                </div>
-                <a href="Blogs/The Red &amp; The Blue/The Red &amp; The Blue.html" class="read-more">Read More &rarr;</a>
-            </div>
-            
-        
-    </div>
-    <div class="view-more">
-        <a href="blogs.html" class="btn btn-primary">View All Blogs</a>
-    </div>
-</section>
-
-
-<!-- Recent Write-ups -->
-<section class="section">
-    <div class="section-header">
-        <h2>Recent Write-ups</h2>
-        <p>CTF solutions and Machine walkthroughs</p>
-    </div>
-    <div class="cards-grid">
-        
-            <div class="empty-state">
-                <p>No write-ups yet. Check back soon!</p>
-            </div>
-        
-    </div>
-    <div class="view-more">
-        <a href="writeups.html" class="btn btn-primary">Read All Write-ups</a>
-    </div>
-</section>
+        <div class="content-footer">
+            <a href="../../blogs.html" class="back-link">&larr; Back to Blogs</a>
+        </div>
+    </section>
 
 
     <!-- Footer -->

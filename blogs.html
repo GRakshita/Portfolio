@@ -1238,9 +1238,36 @@
 <section class="blogs-section">
     <div class="blogs-grid" id="blogsGrid">
         
-            <div class="empty-state">
-                <p>No blog posts yet. Check back soon!</p>
-            </div>
+            
+            <article class="blog-card" data-category="red-vs-blue-teaming">
+                <div class="blog-image" aria-hidden="true">
+                    
+                    <!-- Document SVG (default) -->
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Article">
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM13 3.5L18.5 9H13V3.5z"/>
+                    </svg>
+                    
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span class="blog-category">Red VS Blue Teaming</span>
+                        <span class="blog-date">08-12-2025</span>
+                    </div>
+                    <h3>The Red and The Blue</h3>
+                    <p class="blog-excerpt">A clear breakdown of how red and blue teams operate in modern cybersecurity, explained through a real-world-inspired scenario. The article shows how attackers exploit small weaknesses, how defenders respond, and why both roles are essential for strengthening an organization’s overall security posture.</p>
+                    <div class="blog-tags">
+                        
+                        <span class="tag">blue-team</span>
+                        
+                        <span class="tag">red-team</span>
+                        
+                        <span class="tag">security overview</span>
+                        
+                    </div>
+                    <a href="Blogs/The Red &amp; The Blue/The Red &amp; The Blue.html" class="read-more">Read More &rarr;</a>
+                </div>
+            </article>
+            
         
     </div>
 </section>
@@ -1304,7 +1331,7 @@
         filterTags.forEach(tag => {
             tag.addEventListener('click', () => {
                 filterTags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
+                tag.classList.add('active');    
                 const filter = tag.getAttribute('data-filter');
                 blogCards.forEach(card => {
                     if (filter === 'all') {
