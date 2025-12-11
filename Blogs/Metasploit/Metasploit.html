@@ -1214,84 +1214,104 @@
 <body>
     <!-- Navigation -->
     
-    <nav>
+ <nav>
         <div class="nav-container">
             <div class="logo">Rakshita Gupta</div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blogs.html" class="active">Blogs</a></li>
-                <li><a href="writeups.html">Write-ups</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../blogs.html" class="active">Blogs</a></li>
+                <li><a href="../../writeups.html">Write-ups</a></li>
+                <li><a href="../../projects.html">Projects</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
-    
+ 
 
     
-<header class="page-header">
-    <h1>Blog Posts</h1>
-    <p>Cybersecurity insights, tutorials, and technical deep-dives</p>
-</header>
+    
 
-<section class="blogs-section">
-    <div class="blogs-grid" id="blogsGrid">
+    <section class="content-page">
+        <div class="content-header">
+            <div class="content-meta">
+                <span class="content-category">Offensive Security</span>
+                <span class="content-date">11-12-2025</span>
+            </div>
+            <h1 class="content-title">Breaking down the Architecture of Exploitation with Metasploit</h1>
+            <p class="content-description">Short overview of how Metasploit structures exploitation using its core modules, staged and stageless payloads, and in-memory execution to achieve reliable post-exploitation on modern systems.</p>
+            
+            <div class="content-tags">
+                
+                <span class="tag">metasploit</span>
+                
+                <span class="tag">exploitation</span>
+                
+                <span class="tag">payloads</span>
+                
+                <span class="tag">meterpreter</span>
+                
+                <span class="tag">edr-evasion</span>
+                
+                <span class="tag">red-team</span>
+                
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                
+            </div>
+            
+            
+        </div>
         
-            
-            <article class="blog-card" data-category="offensive-security">
-                <div class="blog-image" aria-hidden="true">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span class="blog-category">Offensive Security</span>
-                        <span class="blog-date">11-12-2025</span>
-                    </div>
-                    <h3>Breaking down the Architecture of Exploitation with Metasploit</h3>
-                    <p class="blog-excerpt">Short overview of how Metasploit structures exploitation using its core modules, staged and stageless payloads, and in-memory execution to achieve reliable post-exploitation on modern systems.</p>
-                    <div class="blog-tags">
-                        
-                        <span class="tag">metasploit</span>
-                        
-                        <span class="tag">exploitation</span>
-                        
-                        <span class="tag">payloads</span>
-                        
-                    </div>
-                    <a href="Blogs/Metasploit/Metasploit.html" class="read-more">Read More &rarr;</a>
-                </div>
-            </article>
-            
-            <article class="blog-card" data-category="red-vs-blue-teaming">
-                <div class="blog-image" aria-hidden="true">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-
-                <div class="blog-content">
-                    <div class="blog-meta">
-                        <span class="blog-category">Red vs Blue Teaming</span>
-                        <span class="blog-date">08-12-2025</span>
-                    </div>
-                    <h3>The Red and The Blue</h3>
-                    <p class="blog-excerpt">A clear breakdown of how red and blue teams operate in modern cybersecurity, explained through a real-world-inspired scenario. The article shows how attackers exploit small weaknesses, how defenders respond, and why both roles are essential for strengthening an organization’s overall security posture.</p>
-                    <div class="blog-tags">
-                        
-                        <span class="tag">blue-team</span>
-                        
-                        <span class="tag">red-team</span>
-                        
-                        <span class="tag">security overview</span>
-                        
-                    </div>
-                    <a href="Blogs/The_Red_and_The_Blue/The_Red_and_The_Blue.html" class="read-more">Read More &rarr;</a>
-                </div>
-            </article>
-            
+        <article class="content-body">
+            <h2>Metasploit’s True Nature</h2>
+<p>Metasploit is a framework for launching exploits, as it is thought mainly, but its real power is its ability to execute the payloads directly in the memory, providing us access to the hardened systems, without any need to write on the disk. Modern shells do not come as files anymore and directly run as legitimate processes in RAM, where signature-based antivirus is unable to detect them.</p>
+<p>Metasploit can manage to slip a fully encrypted, stealth shell that evades detection even against the Windows 11’s aggressive Endpoint Detection and Response (EDR) system and behavioral monitoring.</p>
+<h2>Understanding Metasploit as a Framework</h2>
+<p>We must study the seven modules that will help us in understanding the working of the internal machinery of Metasploit.</p>
+<p>Metasploit is not just a collection of payloads but it is a coordinated framework of these payloads. Inside a target network, every discovery that we make, every vulnerability that we crack through, every shell that we are able to get, comes from these modules working together in synergy with precision.</p>
+<h3>Auxiliary Modules- Reconnaissance Layer</h3>
+<p>Auxiliary modules are usually the starting point functioning as a non-intrusive reconnaissance layer. These modules help in analyzing the target network, secretly, without triggering any alarm or running an exploit code. It helps in extraction of just the surface-level data such as exposed services. It’s more like an intel gathering phase that will help in further exploits and to move deeper into the network.</p>
+<h3>Exploit Modules- Turning Flaws into Execution</h3>
+<p>Exploit modules comme into play when a weak loophole is found. It leverages the vulnerabilities in the system. The payloads under this module are specifically designed to weaponize the vulnerability and turn it into execution by pushing the flawed service to perform an unintended behavior. Whatever may be the flaw, the exploit can be adjusted to abuse the vulnerability.</p>
+<h3>Payload Modules - Defining Post-Access Action</h3>
+<p>Exploit provides us with the entry point but it is futile if it is not paired with payload. Hence, payload modules come in, determining the form of access established and the action to be taken after successful exploitation. Do we get a reverse shell or a fully interactive meterpreter session or otherwise? This choice matters and even more against Windows 11 as the payload has to run and remain functional inside an environment equipped with EDR.</p>
+<h3>Encoder Modules- Sanitizing the Payload</h3>
+<p>Because payloads frequently have to be restructured to meet the constraints of a given exploit, Encoders start functioning. It keeps on redesigning the payload without changing its functionality. It just changes the way bytes look. So, it is mainly used to bypass the static signature, which is heavily relevant to AV/EDRs. But now, the scanning has leaned more towards pattern based and the behavioral checks (dynamic analysis) instead of just byte signatures, therefore, encoders become irrelevant here. Encoders are not the main strategy for evasion as it seems but they are just used for avoiding bad character during the payload generation stage. </p>
+<h3>NOP Generators - Memory Placement Precision</h3>
+<p>Now, there is the most overlooked precision work, NOP (No Operation) generators. While dealing with memory exploits, everything depends on exact placement in the CPU. The payload must be delivered to a safe part of the memory such that the CPU executes the process without detecting it as defective or crashing the entire process. Memory layout is unpredictable due to ASLR (Address Space Layout Randomization), which is why NOP generators create a safe zone in the memory for the payload delivery. NOP creates the pad buffer which is integrated with the payload that ensures the landing of the payload to its destination without any detection.</p>
+<h3>Post-Exploitation Modules - Operating from the Inside</h3>
+<p>The entire operation transforms after getting the first shell. Post-Exploitation modules become our internal toolkit for everything afterwards, that is, privilege escalation, lateral movement, credential harvesting and persistence.</p>
+<h3>Evasion Modules - Surviving Modern Defenses</h3>
+<p>But, without the last module, that is, Evasion Modules, none of this will persist in a modern Windows 11 environment. EDRs have become more behavioral based and less signature based, therefore, these modules shape the execution of the payload, often using reflective loading or in-memory injection to appear harmless even under the active monitoring.</p>
+<p>Together, these seven modules work as a coordinated chain of operations, each one playing its specific role and if they work in perfect harmony, they create an extraordinary moment when even a Windows 11 machine with fully enabled EDR hands out a shell without ever realizing it.</p>
+<h2>Demonstration: Creating and Handling a Meterpreter Reverse HTTP Payload</h2>
+<p><img alt="image.png" src="Breaking%20down%20the%20Architecture%20of%20Exploitation%20wit/image.png" /></p>
+<p>Above is a simple demonstration that depicts a full workflow of how to generate a Windows Meterpreter payload with the help of msfvenom, then executing it on the target, here it's latest Windows 11 and capturing a session through the exploit <code>multi/handler</code> using <code>windows/x64/meterpreter/reverse_http</code> which is a staged payload. The final outcome is fully interactive meterpreter shell, that runs in-memory and provides more features than a normal command shell.</p>
+<h2>Staged vs Stageless</h2>
+<p>There is a decision that affects both stealth and reliability of the payload and that is where we decide whether to use a staged payload or stagedless payload.</p>
+<p>A staged payload is quite simple and small. Initially a stager is delivered which later on connects back to download the main payload directly into the memory. It has less footprints and exposure which is perfect for narrow buffers and complex exploits. The only weakness is that it depends on a stable connection. This is their potential point of failure during the operations.</p>
+<p>Whereas, a stageless payload consists of everything as a single package. It is larger and slightly more suspicious at the delivery stage but it executes with certainty as it does not depend on network stability. Also there is no second step or retrieval phase which makes it easier to set up.</p>
+<h2>The Outcome</h2>
+<p>This is how each part of the Metasploit contributes to the final objective, that is, stealth, memory-resident access that bypasses the modern defenses.</p>
+<p>For the offensive side, it should be learning that now payload selection and a good execution strategy with coherent module execution matters more than ever.</p>
+<p>And for the defensive side, it should be a warning for how signature based detection is no longer enough as the modern shells don’t come as file anymore and directly run as legitimate processes.</p>
+        </article>
         
-    </div>
-</section>
+        <div class="content-footer">
+            <a href="../../blogs.html" class="back-link">&larr; Back to Blogs</a>
+        </div>
+    </section>
 
 
     <!-- Footer -->
@@ -1343,47 +1363,5 @@
     </footer>
 
     
-<script>
-    const filterTags = document.querySelectorAll('.filter-tag');
-    const blogCards = document.querySelectorAll('.blog-card');
-    const searchInput = document.getElementById('searchInput');
-
-    if (filterTags) {
-        filterTags.forEach(tag => {
-            tag.addEventListener('click', () => {
-                filterTags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
-
-                const filter = tag.getAttribute('data-filter');
-
-                blogCards.forEach(card => {
-                    const match = filter === 'all' || card.getAttribute('data-category') === filter;
-                    card.style.display = match ? 'block' : 'none';
-                });
-            });
-        });
-    }
-
-    if (searchInput) {
-        searchInput.addEventListener('input', e => {
-            const searchTerm = e.target.value.toLowerCase();
-
-            blogCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase();
-                const tags = Array.from(card.querySelectorAll('.tag'))
-                                  .map(t => t.textContent.toLowerCase())
-                                  .join(' ');
-
-                const match = title.includes(searchTerm)
-                           || excerpt.includes(searchTerm)
-                           || tags.includes(searchTerm);
-
-                card.style.display = match ? 'block' : 'none';
-            });
-        });
-    }
-</script>
-
 </body>
 </html>
