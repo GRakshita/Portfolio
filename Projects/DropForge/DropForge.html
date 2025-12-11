@@ -924,6 +924,45 @@
             height: auto;
             border-radius: 8px;
             margin: 1.5rem 0;
+            cursor: zoom-in;
+        }
+
+        /* Lightbox / image modal */
+        .lb-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(2,6,12,0.75);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .lb-backdrop.active {
+            display: flex;
+        }
+
+        .lb-image {
+            max-width: 95%;
+            max-height: 95%;
+            box-shadow: 0 20px 60px rgba(2,6,12,0.9);
+            border-radius: 8px;
+            background: #000;
+            cursor: zoom-out;
+        }
+
+        .lb-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.5rem;
+            color: var(--text-white);
+            background: rgba(0,0,0,0.4);
+            border: none;
+            padding: 0.5rem 0.7rem;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
         }
 
         .content-footer {
@@ -1443,6 +1482,56 @@ malware – Final compiled dropper (binary)
         </div>
     </footer>
 
+    <!-- Image lightbox modal -->
+    <div class="lb-backdrop" id="imageLightbox" aria-hidden="true">
+        <button class="lb-close" id="lbClose" aria-label="Close image">✕</button>
+        <img src="" alt="" class="lb-image" id="lbImage">
+    </div>
+
     
+
+    <script>
+    // Delegated click-to-zoom for images inside content pages
+    (function(){
+        const backdrop = document.getElementById('imageLightbox');
+        const lbImage = document.getElementById('lbImage');
+        const lbClose = document.getElementById('lbClose');
+
+        function openLightbox(src, alt){
+            lbImage.src = src;
+            lbImage.alt = alt || '';
+            backdrop.classList.add('active');
+            backdrop.setAttribute('aria-hidden','false');
+            // prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(){
+            backdrop.classList.remove('active');
+            backdrop.setAttribute('aria-hidden','true');
+            lbImage.src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Click outside or on close button
+        backdrop.addEventListener('click', function(e){
+            if(e.target === backdrop || e.target === lbClose) closeLightbox();
+        });
+
+        // ESC to close
+        document.addEventListener('keydown', function(e){
+            if(e.key === 'Escape' && backdrop.classList.contains('active')) closeLightbox();
+        });
+
+        // Delegate for content images
+        document.addEventListener('click', function(e){
+            const img = e.target.closest('.content-body img');
+            if(!img) return;
+            // allow normal click for image links (if wrapped in <a>)
+            if(img.closest('a')) return;
+            openLightbox(img.getAttribute('src'), img.getAttribute('alt'));
+        });
+    })();
+    </script>
 </body>
 </html>
