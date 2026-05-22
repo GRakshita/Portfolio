@@ -1253,157 +1253,123 @@
 <body>
     <!-- Navigation -->
     
-    <nav>
+ <nav>
         <div class="nav-container">
             <div class="logo">Rakshita Gupta</div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="blogs.html">Blogs</a></li>
-                <li><a href="writeups.html">Write-ups</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../blogs.html">Blogs</a></li>
+                <li><a href="../../writeups.html">Write-ups</a></li>
+                <li><a href="../../projects.html" class="active">Projects</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
-    
+ 
 
     
-<!-- Hero Section -->
-<section class="hero">
-    <div class="bg-animation">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="hero-content">
-        <h1>Rakshita Gupta</h1>
-        <h2>Cybersecurity Analyst - Offensive Focused</h2>
-        <p>Breaking systems to build better defenses. Specialized in exploit development, and offensive security operations.</p>
-        <div class="cta-buttons">
-            <a href="Resume/Rakshita_Gupta_Cybersecurity_Engineer.pdf" class="btn btn-primary" target="_blank">Resume</a>
-            <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+    
+
+    <section class="content-page">
+        <div class="content-header">
+            <div class="content-meta">
+                <span class="content-category">Offensive Security Tool</span>
+                <span class="content-date">2026-10-17</span>
+            </div>
+            <h1 class="content-title">Shellcode-Loader – NTAPI-Based In-Memory Executor</h1>
+            <p class="content-description">A Windows-based shellcode loader that uses direct NTAPI calls to allocate memory, inject, and execute a reverse shell payload fully in-memory, leaving no disk artifacts.</p>
+            
+            <div class="content-tags">
+                
+                <span class="tag">powershell</span>
+                
+                <span class="tag">red-team</span>
+                
+                <span class="tag">ntapi</span>
+                
+                <span class="tag">reverse-shell</span>
+                
+                <span class="tag">in-memory</span>
+                
+                <span class="tag">metasploit</span>
+                
+                <span class="tag">windows</span>
+                
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                
+                    <a href="https://github.com/GRakshita/Shellcode-Loader" aria-label="GitHub" target="_blank" rel="noopener noreferrer" style="color:var(--text-white); text-decoration:none; transition: color 0.3s ease; font-size:1.6rem;" class="social-link"><i class="fab fa-github"></i></a>
+                 
+            </div>
+            
+            
         </div>
-    </div>
-</section>
+        
+        <article class="content-body">
+            <h2>Overview</h2>
+<p>Shellcode-Loader is a Windows-based proof-of-concept that demonstrates in-memory shellcode execution using native Windows API (NTAPI) calls sourced directly from <code>ntdll.dll</code>.<br />
+Instead of relying on high-level .NET or Win32 APIs, it invokes low-level functions to allocate memory, write shellcode, flip permissions, and spin up a thread, all within the current process, establishing a Meterpreter reverse TCP session back to the attacker machine.</p>
+<h2>Features</h2>
+<h3>Direct NTAPI Execution</h3>
+<ul>
+<li>Bypasses high-level Win32 APIs by calling <code>ntdll.dll</code> functions via P/Invoke</li>
+<li>Uses <code>NtAllocateVirtualMemory</code>, <code>NtWriteVirtualMemory</code>, and <code>NtCreateThreadEx</code> directly</li>
+</ul>
+<h3>In-Memory Payload Delivery</h3>
+<ul>
+<li>Shellcode never touches disk, executes entirely in process memory</li>
+<li>No compiled binary or intermediate file required</li>
+<li>Single self-contained PowerShell script</li>
+</ul>
+<h3>Metasploit Integration</h3>
+<ul>
+<li>Compatible with <code>msfvenom</code>-generated <code>windows/x64/meterpreter/reverse_tcp</code> payloads</li>
+<li>Pairs with <code>exploit/multi/handler</code> in <code>msfconsole</code> for receiving sessions</li>
+<li>Keepalive loop maintains the process alive for persistent session handling</li>
+</ul>
+<p><strong>Execution flow:</strong></p>
+<pre class="codehilite"><code>P/Invoke Definitions (ntdll.dll)
+        ↓
+NtAllocateVirtualMemory   → Allocate RW memory in current process
+        ↓
+NtWriteVirtualMemory      → Write shellcode bytes into allocated region
+        ↓
+NtVirtualProtectMemory    → Flip protection: RW → Execute
+        ↓
+NtCreateThreadEx          → Spawn thread at shellcode address
+        ↓
+Sleep loop (60s)          → Keep process alive for session persistence
+</code></pre>
 
-<!-- Featured Projects -->
-<section class="section" style="background: var(--secondary-bg);">
-    <div class="section-header">
-        <h2>Featured Projects</h2>
-        <p>Open-source tools and security research</p>
-    </div>
-    <div class="cards-grid">
-        
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-terminal"></i>
-                </div>
-                <h3>Shellcode-Loader – NTAPI-Based In-Memory Executor</h3>
-                <p>A Windows-based shellcode loader that uses direct NTAPI calls to allocate memory, inject, and execute a reverse shell payload fully in-memory, leaving no disk artifacts.</p>
-                <div class="card-meta">
-                    <span class="tag">Offensive Security Tool</span>
-                    
-                    <span class="tag">powershell</span><span class="tag">red-team</span>
-                </div>
-                <a href="Projects/Shellcode-Loader/Shellcode-Loader.html" class="read-more" style="display:inline-block; margin-top:0.75rem;">View Project &rarr;</a>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-database"></i>
-                </div>
-                <h3>Browser-Data-Exfiltrator – Browser History Extraction &amp; Exfiltration Tool</h3>
-                <p>A two-component data exfiltration tool that extracts Chrome and Firefox browsing history from a target Windows machine and transmits it to an attacker-controlled Flask server.</p>
-                <div class="card-meta">
-                    <span class="tag">Offensive Security Tool</span>
-                    
-                    <span class="tag">python</span><span class="tag">powershell</span>
-                </div>
-                <a href="Projects/Browser-Data-Exfiltrator/Browser-Data-Exfiltrator.html" class="read-more" style="display:inline-block; margin-top:0.75rem;">View Project &rarr;</a>
-            </div>
-            
-        
-    </div>
-    <div class="view-more">
-        <a href="projects.html" class="btn btn-secondary">Explore All Projects</a>
-    </div>
-</section>
+<h2>Implementation Details</h2>
+<p><strong>NTAPI over Win32 API</strong> — AV/EDR products commonly hook high-level Win32 calls like <code>VirtualAlloc</code>, <code>WriteProcessMemory</code>, and <code>CreateRemoteThread</code> in user space. Calling the equivalent <code>Nt*</code> functions directly from <code>ntdll.dll</code> sits one layer below those hooks, making detection harder without kernel-level interception.</p>
+<p><strong>Self-targeting with handle <code>-1</code></strong> — All memory operations use the pseudo-handle <code>-1</code>, which Windows resolves to the current process at the kernel level. This avoids opening an explicit process handle (a noisy, logged event) while achieving the same result.</p>
+<p><strong>RW → Execute permission flip</strong> — Memory is first allocated as <code>PAGE_READWRITE</code> to write the shellcode in, then flipped to <code>PAGE_EXECUTE</code> before the thread is spawned. Allocating memory as directly executable (<code>PAGE_EXECUTE_READWRITE</code>) is a well-known red flag that many security tools alert on — the two-step approach is less conspicuous.</p>
+<h2>Sample Output</h2>
+<pre class="codehilite"><code>[*] Started reverse TCP handler on &lt;LHOST&gt;:&lt;LPORT&gt;
+[*] Sending stage to &lt;TARGET_IP&gt;
+[*] Meterpreter session 1 opened
 
-
-<!-- Latest Blogs -->
-<section class="section">
-    <div class="section-header">
-        <h2>Latest Blogs</h2>
-        <p>Insights, tutorials, and research on cybersecurity</p>
-    </div>
-    <div class="cards-grid">
+meterpreter &gt; sysinfo
+meterpreter &gt; getuid
+</code></pre>
+        </article>
         
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-user-secret"></i>
-                </div>
-                <h3>Breaking down the Architecture of Exploitation with Metasploit</h3>
-                <p>Short overview of how Metasploit structures exploitation using its core modules, staged and stageless payloads, and in-memory execution to achieve reliable post-exploitation on modern systems.</p>
-                <div class="card-meta">
-                    <span class="tag">Offensive Security</span>
-                    <span class="tag">metasploit</span><span class="tag">exploitation</span>
-                    <span class="date">11-12-2025</span>
-                </div>
-                <a href="Blogs/Metasploit/Metasploit.html" class="read-more" 
-                   style="display:inline-block; margin-top:0.75rem;">
-                   Read More &rarr;
-                </a>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <h3>The Red and The Blue</h3>
-                <p>A clear breakdown of how red and blue teams operate in modern cybersecurity, explained through a real-world-inspired scenario. The article shows how attackers exploit small weaknesses, how defenders respond, and why both roles are essential for strengthening an organization’s overall security posture.</p>
-                <div class="card-meta">
-                    <span class="tag">Red vs Blue Teaming</span>
-                    <span class="tag">blue-team</span><span class="tag">red-team</span>
-                    <span class="date">08-12-2025</span>
-                </div>
-                <a href="Blogs/The_Red_and_The_Blue/The_Red_and_The_Blue.html" class="read-more" 
-                   style="display:inline-block; margin-top:0.75rem;">
-                   Read More &rarr;
-                </a>
-            </div>
-            
-        
-    </div>
-    <div class="view-more">
-        <a href="blogs.html" class="btn btn-primary">View All Blogs</a>
-    </div>
-</section>
-
-<!-- Recent Write-ups -->
-<section class="section">
-    <div class="section-header">
-        <h2>Recent Write-ups</h2>
-        <p>CTF solutions and Machine walkthroughs</p>
-    </div>
-    <div class="cards-grid">
-        
-            <div class="empty-state">
-                <p>No write-ups yet. Check back soon!</p>
-            </div>
-        
-    </div>
-    <div class="view-more">
-        <a href="writeups.html" class="btn btn-primary">Read All Write-ups</a>
-    </div>
-</section>
+        <div class="content-footer">
+            <a href="../../projects.html" class="back-link">&larr; Back to Projects</a>
+        </div>
+    </section>
 
 
     <!-- Footer -->

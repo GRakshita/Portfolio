@@ -1253,157 +1253,166 @@
 <body>
     <!-- Navigation -->
     
-    <nav>
+ <nav>
         <div class="nav-container">
             <div class="logo">Rakshita Gupta</div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="blogs.html">Blogs</a></li>
-                <li><a href="writeups.html">Write-ups</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../blogs.html">Blogs</a></li>
+                <li><a href="../../writeups.html">Write-ups</a></li>
+                <li><a href="../../projects.html" class="active">Projects</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
-    
+ 
 
     
-<!-- Hero Section -->
-<section class="hero">
-    <div class="bg-animation">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="hero-content">
-        <h1>Rakshita Gupta</h1>
-        <h2>Cybersecurity Analyst - Offensive Focused</h2>
-        <p>Breaking systems to build better defenses. Specialized in exploit development, and offensive security operations.</p>
-        <div class="cta-buttons">
-            <a href="Resume/Rakshita_Gupta_Cybersecurity_Engineer.pdf" class="btn btn-primary" target="_blank">Resume</a>
-            <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+    
+
+    <section class="content-page">
+        <div class="content-header">
+            <div class="content-meta">
+                <span class="content-category">Offensive Security Tool</span>
+                <span class="content-date">2025-10-15</span>
+            </div>
+            <h1 class="content-title">Browser-Data-Exfiltrator – Browser History Extraction &amp; Exfiltration Tool</h1>
+            <p class="content-description">A two-component data exfiltration tool that extracts Chrome and Firefox browsing history from a target Windows machine and transmits it to an attacker-controlled Flask server.</p>
+            
+            <div class="content-tags">
+                
+                <span class="tag">python</span>
+                
+                <span class="tag">powershell</span>
+                
+                <span class="tag">red-team</span>
+                
+                <span class="tag">data-exfiltration</span>
+                
+                <span class="tag">browser</span>
+                
+                <span class="tag">post-exploitation</span>
+                
+                <span class="tag">windows</span>
+                
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                <span>  </span>
+                
+                    <a href="https://github.com/GRakshita/Browser-Data-Exfiltrator" aria-label="GitHub" target="_blank" rel="noopener noreferrer" style="color:var(--text-white); text-decoration:none; transition: color 0.3s ease; font-size:1.6rem;" class="social-link"><i class="fab fa-github"></i></a>
+                 
+            </div>
+            
+            
         </div>
-    </div>
-</section>
+        
+        <article class="content-body">
+            <h2>Overview</h2>
+<p>Browser-Data-Exfiltrator is a post-exploitation proof-of-concept demonstrating browser history theft from Windows targets.<br />
+It consists of a PowerShell client that runs on the victim machine and a Python Flask server on the attacker side. The client queries Chrome and Firefox SQLite history databases directly, collects metadata (username, hostname, timestamps), and POSTs the results as JSON to the server — which stores, exposes, and provides analytics on the collected data.</p>
+<h2>Features</h2>
+<h3>Multi-Browser Support</h3>
+<ul>
+<li>Extracts history from <strong>Chrome/Chromium</strong> and <strong>Firefox</strong></li>
+<li>Dynamically discovers all browser profiles on the system</li>
+<li>Queries native SQLite databases (<code>History</code>, <code>places.sqlite</code>) directly</li>
+</ul>
+<h3>Client-Side Exfiltration (PowerShell)</h3>
+<ul>
+<li>Downloads and loads <code>System.Data.SQLite.dll</code> at runtime from the attacker server</li>
+<li>Creates temporary copies of locked database files before querying</li>
+<li>Cleans up all temporary files post-execution</li>
+<li>Captures last 50 URLs per profile along with visit timestamps</li>
+<li>Collects machine metadata: username, hostname, browser type</li>
+</ul>
+<h3>Server-Side Collection (Python/Flask)</h3>
+<ul>
+<li>Receives and stores exfiltrated data as persistent JSON</li>
+<li>Serves the base64-encoded SQLite DLL to victim clients</li>
+<li>Provides REST API endpoints for data access and management</li>
+<li>Built-in analytics: client count, entry count, browsers, users, hostnames</li>
+</ul>
+<h3>REST API Endpoints</h3>
+<ul>
+<li><code>GET /</code> — HTML dashboard listing all endpoints</li>
+<li><code>POST /upload</code> — Receive exfiltrated history data from victim</li>
+<li><code>GET /data</code> — View all collected data (JSON)</li>
+<li><code>GET /stats</code> — Analytics summary</li>
+<li><code>POST /clear</code> — Reset all stored data</li>
+<li><code>GET /sqldllBase64.txt</code> — Serve base64-encoded SQLite DLL to victim</li>
+</ul>
+<h2>Architecture</h2>
+<pre class="codehilite"><code>Browser-Data-Exfiltrator/
+├── Attacker/
+│   ├── server.py           # Flask server – receives, stores, and serves data
+│   └── sqldllBase64.txt    # Base64-encoded System.Data.SQLite.dll
+├── Victim/
+│   └── exfil.ps1           # PowerShell exfiltration client
+├── ReadMe.md
+└── .gitignore
+</code></pre>
 
-<!-- Featured Projects -->
-<section class="section" style="background: var(--secondary-bg);">
-    <div class="section-header">
-        <h2>Featured Projects</h2>
-        <p>Open-source tools and security research</p>
-    </div>
-    <div class="cards-grid">
-        
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-terminal"></i>
-                </div>
-                <h3>Shellcode-Loader – NTAPI-Based In-Memory Executor</h3>
-                <p>A Windows-based shellcode loader that uses direct NTAPI calls to allocate memory, inject, and execute a reverse shell payload fully in-memory, leaving no disk artifacts.</p>
-                <div class="card-meta">
-                    <span class="tag">Offensive Security Tool</span>
-                    
-                    <span class="tag">powershell</span><span class="tag">red-team</span>
-                </div>
-                <a href="Projects/Shellcode-Loader/Shellcode-Loader.html" class="read-more" style="display:inline-block; margin-top:0.75rem;">View Project &rarr;</a>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-database"></i>
-                </div>
-                <h3>Browser-Data-Exfiltrator – Browser History Extraction &amp; Exfiltration Tool</h3>
-                <p>A two-component data exfiltration tool that extracts Chrome and Firefox browsing history from a target Windows machine and transmits it to an attacker-controlled Flask server.</p>
-                <div class="card-meta">
-                    <span class="tag">Offensive Security Tool</span>
-                    
-                    <span class="tag">python</span><span class="tag">powershell</span>
-                </div>
-                <a href="Projects/Browser-Data-Exfiltrator/Browser-Data-Exfiltrator.html" class="read-more" style="display:inline-block; margin-top:0.75rem;">View Project &rarr;</a>
-            </div>
-            
-        
-    </div>
-    <div class="view-more">
-        <a href="projects.html" class="btn btn-secondary">Explore All Projects</a>
-    </div>
-</section>
+<p><strong>Data flow:</strong></p>
+<pre class="codehilite"><code>Victim runs exfil.ps1
+        ↓
+Download + decode SQLite DLL from attacker server
+        ↓
+Discover Chrome/Firefox profiles on victim machine
+        ↓
+Copy locked DB files → Query via SQLite → Extract last 50 URLs
+        ↓
+Bundle with metadata (user, host, browser, timestamp)
+        ↓
+POST JSON payload → http://&lt;attacker&gt;:5000/upload
+        ↓
+Server stores data → browser_history_data.json
+</code></pre>
 
+<h2>Implementation Details</h2>
+<p><strong>Copying locked database files</strong> — Both Chrome and Firefox hold an exclusive lock on their SQLite history databases while the browser is running. Rather than failing on a locked file, the script copies each database to a temp path with a random GUID filename before querying, which sidesteps the lock entirely.</p>
+<p><strong>Base64 DLL delivery</strong> — Shipping the <code>System.Data.SQLite.dll</code> as a base64-encoded text file serves two purposes: it allows the Flask server to deliver a binary dependency over a plain HTTP GET without encoding issues, and it makes the transfer look like a text response rather than a raw binary, which is less likely to trigger network-level inspection.</p>
+<p><strong>Artifact cleanup</strong> — All temporary files (copied databases, decoded DLL) are deleted after execution using random GUID names, reducing forensic footprint on the victim machine.</p>
+<h2>Sample Output</h2>
+<p><strong>Server <code>/stats</code> endpoint:</strong></p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;total_clients&quot;: 1,
+  &quot;total_entries&quot;: 97,
+  &quot;browsers_found&quot;: [&quot;Chrome&quot;, &quot;Firefox&quot;],
+  &quot;users&quot;: [&quot;john&quot;],
+  &quot;hostnames&quot;: [&quot;DESKTOP-ABC123&quot;],
+  &quot;last_received&quot;: &quot;2026-05-22T14:33:10&quot;
+}
+</code></pre>
 
-<!-- Latest Blogs -->
-<section class="section">
-    <div class="section-header">
-        <h2>Latest Blogs</h2>
-        <p>Insights, tutorials, and research on cybersecurity</p>
-    </div>
-    <div class="cards-grid">
+<p><strong>Server <code>/data</code> endpoint (excerpt):</strong></p>
+<pre class="codehilite"><code class="language-json">[
+  {
+    &quot;user&quot;: &quot;john&quot;,
+    &quot;hostname&quot;: &quot;DESKTOP-ABC123&quot;,
+    &quot;browser&quot;: &quot;Chrome&quot;,
+    &quot;url&quot;: &quot;https://example.com&quot;,
+    &quot;title&quot;: &quot;Example Domain&quot;,
+    &quot;visit_time&quot;: &quot;2026-05-22 13:45:00&quot;,
+    &quot;timestamp&quot;: &quot;2026-05-22T14:33:10&quot;
+  }
+]
+</code></pre>
+        </article>
         
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-user-secret"></i>
-                </div>
-                <h3>Breaking down the Architecture of Exploitation with Metasploit</h3>
-                <p>Short overview of how Metasploit structures exploitation using its core modules, staged and stageless payloads, and in-memory execution to achieve reliable post-exploitation on modern systems.</p>
-                <div class="card-meta">
-                    <span class="tag">Offensive Security</span>
-                    <span class="tag">metasploit</span><span class="tag">exploitation</span>
-                    <span class="date">11-12-2025</span>
-                </div>
-                <a href="Blogs/Metasploit/Metasploit.html" class="read-more" 
-                   style="display:inline-block; margin-top:0.75rem;">
-                   Read More &rarr;
-                </a>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <h3>The Red and The Blue</h3>
-                <p>A clear breakdown of how red and blue teams operate in modern cybersecurity, explained through a real-world-inspired scenario. The article shows how attackers exploit small weaknesses, how defenders respond, and why both roles are essential for strengthening an organization’s overall security posture.</p>
-                <div class="card-meta">
-                    <span class="tag">Red vs Blue Teaming</span>
-                    <span class="tag">blue-team</span><span class="tag">red-team</span>
-                    <span class="date">08-12-2025</span>
-                </div>
-                <a href="Blogs/The_Red_and_The_Blue/The_Red_and_The_Blue.html" class="read-more" 
-                   style="display:inline-block; margin-top:0.75rem;">
-                   Read More &rarr;
-                </a>
-            </div>
-            
-        
-    </div>
-    <div class="view-more">
-        <a href="blogs.html" class="btn btn-primary">View All Blogs</a>
-    </div>
-</section>
-
-<!-- Recent Write-ups -->
-<section class="section">
-    <div class="section-header">
-        <h2>Recent Write-ups</h2>
-        <p>CTF solutions and Machine walkthroughs</p>
-    </div>
-    <div class="cards-grid">
-        
-            <div class="empty-state">
-                <p>No write-ups yet. Check back soon!</p>
-            </div>
-        
-    </div>
-    <div class="view-more">
-        <a href="writeups.html" class="btn btn-primary">Read All Write-ups</a>
-    </div>
-</section>
+        <div class="content-footer">
+            <a href="../../projects.html" class="back-link">&larr; Back to Projects</a>
+        </div>
+    </section>
 
 
     <!-- Footer -->
